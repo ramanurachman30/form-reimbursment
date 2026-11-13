@@ -1,65 +1,120 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://unistyl.es/), etc.
- */
+export type ThemeMode = 'light' | 'dark' | 'system';
+export type ResolvedTheme = 'light' | 'dark';
 
-import '@/global.css';
+export interface ThemeColors {
+  background: string;
+  backgroundSecondary: string;
+  card: string;
+  cardBorder: string;
+  cardShadow: string;
+  text: string;
+  textSecondary: string;
+  textMuted: string;
+  primary: string;
+  primaryHover: string;
+  primaryLight: string;
+  primaryText: string;
+  inputBackground: string;
+  inputBorder: string;
+  inputBorderFocused: string;
+  inputText: string;
+  inputPlaceholder: string;
+  inputDisabled: string;
+  errorBackground: string;
+  errorBorder: string;
+  errorText: string;
+  dummyCardBg: string;
+  dummyCardBorder: string;
+  dummyAvatarBg: string;
+  logoBadgeBg: string;
+  logoBadgeBorder: string;
+  statBoxBg: string;
+  statBoxBorder: string;
+  infoBannerBg: string;
+  infoBannerBorder: string;
+  infoBannerText: string;
+  profileCardBg: string;
+  segmentedBg: string;
+  segmentedActiveBg: string;
+  segmentedText: string;
+  segmentedActiveText: string;
+}
 
-import { Platform } from 'react-native';
-
-export const Colors = {
+export const Colors: Record<ResolvedTheme, ThemeColors> = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    background: '#F1F5F9',
+    backgroundSecondary: '#E2E8F0',
+    card: '#FFFFFF',
+    cardBorder: '#E2E8F0',
+    cardShadow: '#0F172A',
+    text: '#0F172A',
+    textSecondary: '#64748B',
+    textMuted: '#94A3B8',
+    primary: '#2563EB',
+    primaryHover: '#1D4ED8',
+    primaryLight: '#DBEAFE',
+    primaryText: '#FFFFFF',
+    inputBackground: '#F8FAFC',
+    inputBorder: '#E2E8F0',
+    inputBorderFocused: '#2563EB',
+    inputText: '#0F172A',
+    inputPlaceholder: '#94A3B8',
+    inputDisabled: '#F1F5F9',
+    errorBackground: '#FEF2F2',
+    errorBorder: '#FCA5A5',
+    errorText: '#B91C1C',
+    dummyCardBg: '#F8FAFC',
+    dummyCardBorder: '#E2E8F0',
+    dummyAvatarBg: '#DBEAFE',
+    logoBadgeBg: '#FFFFFF',
+    logoBadgeBorder: '#E2E8F0',
+    statBoxBg: '#FFFFFF',
+    statBoxBorder: '#E2E8F0',
+    infoBannerBg: '#EFF6FF',
+    infoBannerBorder: '#BFDBFE',
+    infoBannerText: '#1E40AF',
+    profileCardBg: '#1E293B',
+    segmentedBg: '#E2E8F0',
+    segmentedActiveBg: '#FFFFFF',
+    segmentedText: '#64748B',
+    segmentedActiveText: '#2563EB',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    background: '#0B0F19',
+    backgroundSecondary: '#151E2E',
+    card: '#161F30',
+    cardBorder: '#26354D',
+    cardShadow: '#000000',
+    text: '#F8FAFC',
+    textSecondary: '#94A3B8',
+    textMuted: '#64748B',
+    primary: '#3B82F6',
+    primaryHover: '#2563EB',
+    primaryLight: '#1E3A8A',
+    primaryText: '#FFFFFF',
+    inputBackground: '#0F172A',
+    inputBorder: '#334155',
+    inputBorderFocused: '#3B82F6',
+    inputText: '#F8FAFC',
+    inputPlaceholder: '#64748B',
+    inputDisabled: '#1E293B',
+    errorBackground: '#450A0A',
+    errorBorder: '#7F1D1D',
+    errorText: '#FCA5A5',
+    dummyCardBg: '#0F172A',
+    dummyCardBorder: '#26354D',
+    dummyAvatarBg: '#1E293B',
+    logoBadgeBg: '#161F30',
+    logoBadgeBorder: '#26354D',
+    statBoxBg: '#161F30',
+    statBoxBorder: '#26354D',
+    infoBannerBg: '#172554',
+    infoBannerBorder: '#1E3A8A',
+    infoBannerText: '#93C5FD',
+    profileCardBg: '#0F172A',
+    segmentedBg: '#1E293B',
+    segmentedActiveBg: '#334155',
+    segmentedText: '#94A3B8',
+    segmentedActiveText: '#60A5FA',
   },
-} as const;
-
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
-
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
-
-export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
-} as const;
-
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+};
